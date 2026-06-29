@@ -4,6 +4,19 @@
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&duration=2200&pause=400&color=5eead4&center=true&vCenter=true&width=820&lines=%24+mysql+-u+root+%3C+01_schema.sql;%E2%9C%93+9+tables+created+%E2%80%94+0+errors;%24+mysql+-u+root+%3C+03_triggers.sql;%E2%9C%93+4+triggers+compiled+%E2%80%94+tested+live;%24+CALL+sp_transfer_stock(9%2C+2%2C+1%2C+20)%3B;%E2%9C%93+Bengaluru+130%E2%86%92110+%C2%B7+Chennai+18%E2%86%9238" alt="fake terminal session" />
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Author-Surya%20T-F5A623?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="author"/>
+  <img src="https://img.shields.io/badge/Internship-Elevate%20Labs-3DA9FC?style=for-the-badge&logo=googleclassroom&logoColor=white&labelColor=0d1117" alt="elevate labs"/>
+  <img src="https://img.shields.io/github/last-commit/SURYATSG786/WaRehouse-and-Inventory-Management-System---Elevate-Labs-?color=00F5D4&style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="last commit"/>
+</p>
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=StockSync-SuryaT&style=for-the-badge&color=F5A623&labelColor=0d1117&label=RECRUITERS%20VIEWING%20THIS" alt="live views"/>
+</p>
+
+<img src="./assets/divider.svg" width="100%" height="4"/>
+
 <p align="center">
   <img src="https://img.shields.io/badge/Database-MySQL%208-4479A1?style=for-the-badge&logo=mysql&logoColor=white&labelColor=0d1117" alt="mysql"/>
   <img src="https://img.shields.io/badge/Tool-DBeaver-372923?style=for-the-badge&logo=databricks&logoColor=white&labelColor=0d1117" alt="dbeaver"/>
@@ -278,6 +291,12 @@ A `stock_value_history` table for time-series valuation trends, role-based acces
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
+<img src="./assets/divider.svg" width="100%" height="4"/>
+
 <div align="center">
-<sub>Built as part of an internship project · MySQL + DBeaver · every trigger and procedure in this README was executed against live data before being written down.</sub>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=16&duration=3000&pause=1000&color=F5A623&center=true&vCenter=true&width=700&lines=Built+by+Surya+T;Elevate+Labs+Internship+Project+2026" alt="footer credit" />
+
+<sub>Every trigger and procedure in this README was executed against live data before being written down.</sub>
+
 </div>
