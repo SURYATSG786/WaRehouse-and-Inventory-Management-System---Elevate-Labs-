@@ -8,18 +8,10 @@
 MySQL · DBeaver · Triggers · Procedures · Views
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Author-Surya%20T-F5A623?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="author"/>
-  <img src="https://img.shields.io/badge/Internship-Elevate%20Labs-3DA9FC?style=for-the-badge&logo=googleclassroom&logoColor=white&labelColor=0d1117" alt="elevate labs"/>
-  <img src="https://img.shields.io/github/last-commit/SURYATSG786/WaRehouse-and-Inventory-Management-System---Elevate-Labs-?color=00F5D4&style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="last commit"/>
-</p>
-
-<img src="./assets/divider.svg" width="100%" height="4"/>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Database-MySQL%208-4479A1?style=for-the-badge&logo=mysql&logoColor=white&labelColor=0d1117" alt="mysql"/>
-  <img src="https://img.shields.io/badge/Tool-DBeaver-372923?style=for-the-badge&logo=databricks&logoColor=white&labelColor=0d1117" alt="dbeaver"/>
-  <img src="https://img.shields.io/badge/Objects-Tables%20%C2%B7%20Views%20%C2%B7%20Triggers%20%C2%B7%20Procedures-3DA9FC?style=for-the-badge&logo=databricks&logoColor=white&labelColor=0d1117" alt="objects"/>
+  <img src="https://img.shields.io/badge/Database-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white&labelColor=0d1117" alt="mysql"/>
+  <img src="https://img.shields.io/badge/Language-SQL-00758F?style=for-the-badge&logo=postgresql&logoColor=white&labelColor=0d1117" alt="sql"/>
   <img src="https://img.shields.io/badge/License-MIT-00F5D4?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=0d1117" alt="license"/>
+  <img src="https://img.shields.io/github/last-commit/SURYATSG786/WaRehouse-and-Inventory-Management-System---Elevate-Labs-?color=F5A623&style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="last commit"/>
 </p>
 
 **Tested on:** MySQL 8.0 (verified against MariaDB 10.11 as well) · DBeaver 26
@@ -53,11 +45,87 @@ MySQL · DBeaver · Triggers · Procedures · Views
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🎯 What This Project Actually Does
+## 🎯 Objectives
 
-This project follows a **transaction-based inventory design**, where stock movements are recorded as transactions instead of directly updating quantities. Every stock change — a sale, a delivery, a transfer between warehouses — is written as an immutable row in `stock_transactions`. A trigger then syncs the live `stock` balance automatically, and a second trigger watches for low-stock thresholds and opens reorder alerts on its own. This improves **auditability, consistency, and data integrity**, since the database enforces the business rules rather than relying on the application layer to get it right every time.
+- Manage inventory across multiple warehouses
+- Maintain complete transaction history for every stock movement
+- Automatically update stock balances without manual intervention
+- Detect low-stock conditions and surface them as actionable alerts
+- Generate analytical reports for purchasing and warehouse decisions
 
-That single design decision is what makes this worth explaining in an interview: it demonstrates **triggers, transactions, referential integrity, and audit-trail design** in one coherent system.
+<img src="./assets/divider.svg" width="100%" height="4"/>
+
+## 📈 Database at a Glance
+
+<table align="center">
+<tr>
+<td align="center"><strong>9</strong><br/>Tables</td>
+<td align="center"><strong>4</strong><br/>Triggers</td>
+<td align="center"><strong>5</strong><br/>Stored Procedures</td>
+<td align="center"><strong>3</strong><br/>Views</td>
+<td align="center"><strong>10</strong><br/>Analytical Queries</td>
+</tr>
+<tr>
+<td align="center"><strong>15</strong><br/>Products</td>
+<td align="center"><strong>3</strong><br/>Warehouses</td>
+<td align="center"><strong>5</strong><br/>Suppliers</td>
+<td align="center"><strong>5</strong><br/>Categories</td>
+<td align="center"><strong>1</strong><br/>Window Function</td>
+</tr>
+</table>
+
+<img src="./assets/divider.svg" width="100%" height="4"/>
+
+## 🧠 SQL Concepts Demonstrated
+
+- DDL (table, view, index, trigger, and procedure definitions)
+- DML (inserts, updates, deletes across all tables)
+- DCL-aware design (`GRANT`-ready schema; see Future Enhancements)
+- TCL (`START TRANSACTION`, `COMMIT`, implicit rollback on error)
+- Views
+- Stored Procedures
+- Triggers
+- Transactions
+- Window Functions (`RANK() OVER (PARTITION BY ...)`)
+- Foreign Keys
+- Constraints (`CHECK`, `UNIQUE`, `SIGNAL SQLSTATE`)
+- Indexes
+
+<img src="./assets/divider.svg" width="100%" height="4"/>
+
+## 📋 Project Overview
+
+This project implements a transaction-based warehouse management system where every stock movement is recorded as an immutable transaction, ensuring data integrity, auditability, and automated inventory management through SQL triggers.
+
+Every stock change — a sale, a delivery, a transfer between warehouses — is written as a row in `stock_transactions`. A trigger then syncs the live `stock` balance automatically, and a second trigger watches for low-stock thresholds and opens reorder alerts on its own. The database enforces the business rules rather than relying on the application layer to get it right every time.
+
+That single design decision is what makes this worth explaining in an interview: it demonstrates triggers, transactions, referential integrity, and audit-trail design in one coherent system.
+
+<img src="./assets/divider.svg" width="100%" height="4"/>
+
+## 🏗️ Project Architecture
+
+<div align="center">
+<img src="./assets/architecture-flow.svg" width="100%" alt="Architecture flow: User to Stored Procedures to Stock Transactions to Triggers to Stock Table to Views to Reports"/>
+</div>
+
+```text
+User
+  ↓
+Stored Procedures
+  ↓
+Stock Transactions
+  ↓
+Triggers
+  ↓
+Stock Table
+  ↓
+Views
+  ↓
+Reports
+```
+
+The user (or application) never writes to `stock` directly — every path to a changed balance goes through a procedure, which inserts a transaction, which a trigger then turns into an updated balance.
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
@@ -138,20 +206,21 @@ erDiagram
 
 ## 📸 Screenshots
 
-> GitHub renders the ER diagram above natively as an actual diagram, so that part's already covered. The screenshots below are from this project's own DBeaver session — add yours here when you open the project locally, since a database screenshot is only meaningful if it's from a session you actually ran.
+> GitHub renders both diagrams above natively, so those are already covered. The screenshots below have to come from this project's own DBeaver session — they're not added yet. Capture them locally and drop them into a `screenshots/` folder before final submission; a README that just describes a database is weaker than one that shows it actually running.
 
-| Screenshot | What to capture |
+| File | What to capture |
 |---|---|
 | `screenshots/tables.png` | Database Navigator → `warehouse_db` → Tables (all 9 expanded) |
 | `screenshots/triggers.png` | Database Navigator → Triggers, showing all 4 |
 | `screenshots/procedures.png` | Database Navigator → Procedures, showing all 5 |
+| `screenshots/views.png` | Database Navigator → Views, showing all 3 |
 | `screenshots/query-output.png` | Result grid from `CALL sp_reorder_report();` |
-| `screenshots/er-diagram.png` | DBeaver's own ER Diagram tab for `warehouse_db` |
 
 ```md
 ![Tables](screenshots/tables.png)
 ![Triggers](screenshots/triggers.png)
 ![Procedures](screenshots/procedures.png)
+![Views](screenshots/views.png)
 ![Query Output](screenshots/query-output.png)
 ```
 
@@ -194,6 +263,8 @@ The original `INSERT` into `stock_transactions` rolled back completely — no or
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
 ## 🔧 Stored Procedures
+
+Transactional procedures follow ACID principles — each one wraps its writes in `START TRANSACTION ... COMMIT`, so a stock transfer or purchase order creation either completes fully or not at all, with consistency enforced by the trigger layer underneath.
 
 | Procedure | What it does |
 |---|---|
@@ -286,6 +357,7 @@ WaRehouse-and-Inventory-Management-System---Elevate-Labs-/
 ├── README.md
 ├── assets/
 │   ├── hero-banner.svg
+│   ├── architecture-flow.svg
 │   └── divider.svg
 ├── screenshots/
 │   └── (add your DBeaver screenshots here)
@@ -330,11 +402,18 @@ If ten different parts of the app (web form, mobile app, batch import) all need 
 
 </details>
 
+<details>
+<summary><strong>"What does ACID mean in the context of your procedures?"</strong></summary>
+
+Atomicity: `sp_transfer_stock` and `sp_create_purchase_order` wrap multiple inserts in one transaction, so either all of them commit or none do. Consistency: the `CHECK` constraints and triggers stop the database from ever holding an invalid state, like negative stock. Isolation: InnoDB's row-level locking means two simultaneous transfers on the same product don't corrupt each other's reads. Durability: once `COMMIT` returns, the change survives — it's written to InnoDB's transaction log, not just sitting in memory.
+
+</details>
+
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
 ## 🚧 Future Enhancements
 
-- User authentication and role-based access (warehouse staff vs. purchasing manager) via MySQL users/grants
+- User authentication and role-based access (warehouse staff vs. purchasing manager) via MySQL users/grants (DCL)
 - A web dashboard for visualizing stock levels, alerts, and warehouse KPIs in real time
 - Barcode/QR support for scanning products in and out of stock
 - A REST API layer on top of the procedures, so external systems (e.g. an e-commerce storefront) can issue/receive stock programmatically
