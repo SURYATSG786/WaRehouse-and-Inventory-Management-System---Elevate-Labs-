@@ -1,0 +1,81 @@
+<svg viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a12"/>
+      <stop offset="100%" stop-color="#0d1320"/>
+    </linearGradient>
+
+    <linearGradient id="titleGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0" spreadMethod="repeat">
+      <stop offset="0%" stop-color="#00F5D4"/>
+      <stop offset="33%" stop-color="#3DA9FC"/>
+      <stop offset="66%" stop-color="#F5A623"/>
+      <stop offset="100%" stop-color="#00F5D4"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="1200 0" dur="6s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#3DA9FC"/>
+      <stop offset="100%" stop-color="#3DA9FC" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="vign" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#101a2e" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#070a12" stop-opacity="0.9"/>
+    </radialGradient>
+
+    <filter id="bigBlur" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" fill="none" stroke="#16213a" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="320" fill="url(#bgGrad)"/>
+  <rect width="1200" height="320" fill="url(#grid)" opacity="0.5"/>
+  <rect width="1200" height="320" fill="url(#vign)"/>
+
+  <!-- table/schema connection lines -->
+  <g stroke="#2f81f7" stroke-width="1" opacity="0.35">
+    <path d="M60,60 L230,110" stroke-dasharray="4 6"><animate attributeName="stroke-dashoffset" values="0;-20" dur="2.4s" repeatCount="indefinite"/></path>
+    <path d="M1140,55 L970,105" stroke-dasharray="4 6"><animate attributeName="stroke-dashoffset" values="0;-20" dur="2.1s" repeatCount="indefinite"/></path>
+    <path d="M70,260 L240,225" stroke-dasharray="4 6"><animate attributeName="stroke-dashoffset" values="0;-20" dur="2.7s" repeatCount="indefinite"/></path>
+    <path d="M1130,270 L965,230" stroke-dasharray="4 6"><animate attributeName="stroke-dashoffset" values="0;-20" dur="1.9s" repeatCount="indefinite"/></path>
+    <path d="M150,150 L320,170" stroke-dasharray="3 5"><animate attributeName="stroke-dashoffset" values="0;-16" dur="2.3s" repeatCount="indefinite"/></path>
+    <path d="M1050,150 L880,170" stroke-dasharray="3 5"><animate attributeName="stroke-dashoffset" values="0;-16" dur="2.5s" repeatCount="indefinite"/></path>
+  </g>
+
+  <!-- pulsing schema nodes -->
+  <g>
+    <circle cx="60" cy="60" r="4" fill="url(#nodeGlow)"><animate attributeName="opacity" values="0.2;1;0.2" dur="2.4s" repeatCount="indefinite"/></circle>
+    <circle cx="230" cy="110" r="3" fill="url(#nodeGlow)"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" begin="0.3s" repeatCount="indefinite"/></circle>
+    <circle cx="1140" cy="55" r="4" fill="url(#nodeGlow)"><animate attributeName="opacity" values="0.2;1;0.2" dur="2.1s" begin="0.6s" repeatCount="indefinite"/></circle>
+    <circle cx="970" cy="105" r="3" fill="url(#nodeGlow)"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.6s" begin="0.2s" repeatCount="indefinite"/></circle>
+    <circle cx="70" cy="260" r="3.5" fill="url(#nodeGlow)"><animate attributeName="opacity" values="0.2;1;0.2" dur="2.7s" begin="0.9s" repeatCount="indefinite"/></circle>
+    <circle cx="240" cy="225" r="3" fill="url(#nodeGlow)"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.9s" begin="0.4s" repeatCount="indefinite"/></circle>
+    <circle cx="1130" cy="270" r="4" fill="url(#nodeGlow)"><animate attributeName="opacity" values="0.2;1;0.2" dur="2.2s" begin="0.7s" repeatCount="indefinite"/></circle>
+    <circle cx="965" cy="230" r="3" fill="url(#nodeGlow)"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" begin="0.5s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <!-- badge pill -->
+  <g>
+    <rect x="380" y="18" width="440" height="28" rx="14" fill="#0d1726" stroke="#3DA9FC" stroke-width="1.2">
+      <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="2.4s" repeatCount="indefinite"/>
+    </rect>
+    <text x="600" y="37" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="12" letter-spacing="1.5" fill="#7dd3fc">MYSQL · DBEAVER · TRIGGER-DRIVEN INVENTORY ENGINE</text>
+  </g>
+
+  <!-- glow duplicate of title (blurred) -->
+  <text x="600" y="172" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-weight="900" font-size="80" fill="#3DA9FC" filter="url(#bigBlur)" opacity="0.55">StockSync</text>
+
+  <!-- crisp title -->
+  <text x="600" y="172" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-weight="900" font-size="80" fill="url(#titleGrad)">StockSync</text>
+
+  <!-- subtitle -->
+  <text x="600" y="222" text-anchor="middle" font-family="Consolas, 'JetBrains Mono', monospace" font-size="22" fill="#cdd6e4" letter-spacing="0.5">Inventory &amp; Warehouse Management System</text>
+
+  <!-- bottom scanning beam -->
+  <rect y="312" width="1200" height="3" fill="url(#titleGrad)" opacity="0.8"/>
+</svg>
