@@ -33,7 +33,7 @@ MySQL · DBeaver · Triggers · Procedures · Views
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## ✅ Features
+## ❖ Features
 
 - ✔ Multi-product, multi-category inventory management
 - ✔ Multi-warehouse support with per-warehouse capacity tracking
@@ -45,7 +45,7 @@ MySQL · DBeaver · Triggers · Procedures · Views
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🎯 Objectives
+## ❖ Objectives
 
 - Manage inventory across multiple warehouses
 - Maintain complete transaction history for every stock movement
@@ -55,7 +55,7 @@ MySQL · DBeaver · Triggers · Procedures · Views
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 📈 Database at a Glance
+## ❖ Database at a Glance
 
 <table align="center">
 <tr>
@@ -76,7 +76,7 @@ MySQL · DBeaver · Triggers · Procedures · Views
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🧠 SQL Concepts Demonstrated
+## ❖ SQL Concepts Demonstrated
 
 - DDL (table, view, index, trigger, and procedure definitions)
 - DML (inserts, updates, deletes across all tables)
@@ -93,7 +93,7 @@ MySQL · DBeaver · Triggers · Procedures · Views
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 📋 Project Overview
+## ❖ Project Overview
 
 This project implements a transaction-based warehouse management system where every stock movement is recorded as an immutable transaction, ensuring data integrity, auditability, and automated inventory management through SQL triggers.
 
@@ -103,7 +103,7 @@ That single design decision is what makes this worth explaining in an interview:
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🏗️ Project Architecture
+## ❖ Project Architecture
 
 <div align="center">
 <img src="./assets/architecture-flow.svg" width="100%" alt="Architecture flow: User to Stored Procedures to Stock Transactions to Triggers to Stock Table to Views to Reports"/>
@@ -129,7 +129,7 @@ The user (or application) never writes to `stock` directly — every path to a c
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🧩 Entity-Relationship Diagram
+## ❖ Entity-Relationship Diagram
 
 ```mermaid
 erDiagram
@@ -204,7 +204,7 @@ erDiagram
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 📸 Screenshots
+## ❖ Screenshots
 
 > GitHub renders both diagrams above natively, so those are already covered. The screenshots below have to come from this project's own DBeaver session — they're not added yet. Capture them locally and drop them into a `screenshots/` folder before final submission; a README that just describes a database is weaker than one that shows it actually running.
 
@@ -226,7 +226,7 @@ erDiagram
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🗂️ Schema Overview
+## ❖ Schema Overview
 
 | Table | Purpose |
 |---|---|
@@ -262,7 +262,7 @@ The original `INSERT` into `stock_transactions` rolled back completely — no or
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🔧 Stored Procedures
+## ❖ Stored Procedures
 
 Transactional procedures follow ACID principles — each one wraps its writes in `START TRANSACTION ... COMMIT`, so a stock transfer or purchase order creation either completes fully or not at all, with consistency enforced by the trigger layer underneath.
 
@@ -288,7 +288,7 @@ The source warehouse's quantity decreased by 20 and the destination warehouse's 
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 📊 Reporting Output
+## ❖ Reporting Output
 
 > Example output from the sample dataset in `02_sample_data.sql`. These numbers will differ once you start running transactions of your own — that's expected, since the whole point of this design is that the numbers move as real activity happens.
 
@@ -310,7 +310,7 @@ The source warehouse's quantity decreased by 20 and the destination warehouse's 
 | Mumbai Distribution | 15 | 1,043 | 3,82,857 | 5.8% |
 
 <details>
-<summary>📋 <strong>See all 10 queries in <code>06_queries.sql</code> (click to expand)</strong></summary>
+<summary>❖ <strong>See all 10 queries in <code>06_queries.sql</code> (click to expand)</strong></summary>
 
 1. Current stock level + status per product/warehouse
 2. Open reorder alerts with supplier contact
@@ -327,7 +327,7 @@ The source warehouse's quantity decreased by 20 and the destination warehouse's 
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🛠️ How to Run This in DBeaver
+## ❖ How to Run This in DBeaver
 
 1. **Install MySQL** (or use any reachable MySQL 8 / MariaDB 10.2+ server) and connect to it in DBeaver via *Database → New Database Connection → MySQL*.
 2. Open a **SQL Editor** against your connection.
@@ -350,7 +350,7 @@ The source warehouse's quantity decreased by 20 and the destination warehouse's 
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 📁 Folder Structure
+## ❖ Folder Structure
 
 ```
 WaRehouse-and-Inventory-Management-System---Elevate-Labs-/
@@ -372,7 +372,7 @@ WaRehouse-and-Inventory-Management-System---Elevate-Labs-/
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🎤 Interview Talking Points
+## ❖ Interview Talking Points
 
 <details>
 <summary><strong>"Walk me through your project."</strong></summary>
@@ -411,7 +411,7 @@ Atomicity: `sp_transfer_stock` and `sp_create_purchase_order` wrap multiple inse
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🚧 Future Enhancements
+## ❖ Future Enhancements
 
 - User authentication and role-based access (warehouse staff vs. purchasing manager) via MySQL users/grants (DCL)
 - A web dashboard for visualizing stock levels, alerts, and warehouse KPIs in real time
