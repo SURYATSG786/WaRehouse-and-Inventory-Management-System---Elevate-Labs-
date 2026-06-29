@@ -20,6 +20,32 @@ MySQL · DBeaver · Triggers · Procedures · Views
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
+## ❖ Project Architecture
+
+<div align="center">
+<img src="./assets/architecture-flow.svg" width="100%" alt="Architecture flow: User to Stored Procedures to Stock Transactions to Triggers to Stock Table to Views to Reports"/>
+</div>
+
+```text
+User
+  ↓
+Stored Procedures
+  ↓
+Stock Transactions
+  ↓
+Triggers
+  ↓
+Stock Table
+  ↓
+Views
+  ↓
+Reports
+```
+
+The user (or application) never writes to `stock` directly — every path to a changed balance goes through a procedure, which inserts a transaction, which a trigger then turns into an updated balance.
+
+<img src="./assets/divider.svg" width="100%" height="4"/>
+
 ## ❖ Technologies Used
 
 - MySQL 8
@@ -95,37 +121,9 @@ MySQL · DBeaver · Triggers · Procedures · Views
 
 ## ❖ Project Overview
 
-This project implements a transaction-based warehouse management system where every stock movement is recorded as an immutable transaction, ensuring data integrity, auditability, and automated inventory management through SQL triggers.
+This system doesn't let the app update stock numbers directly. Every time stock changes that is a sale, a delivery, a transfer between warehouses it gets written down as its own record in the `stock_transactions` table. A trigger then reads that record and updates the actual stock count automatically. A second trigger keeps watching stock levels, and if something drops too low, it raises a reorder alert on its own no one has to check manually.
 
-Every stock change — a sale, a delivery, a transfer between warehouses — is written as a row in `stock_transactions`. A trigger then syncs the live `stock` balance automatically, and a second trigger watches for low-stock thresholds and opens reorder alerts on its own. The database enforces the business rules rather than relying on the application layer to get it right every time.
-
-That single design decision is what makes this worth explaining in an interview: it demonstrates triggers, transactions, referential integrity, and audit-trail design in one coherent system.
-
-<img src="./assets/divider.svg" width="100%" height="4"/>
-
-## ❖ Project Architecture
-
-<div align="center">
-<img src="./assets/architecture-flow.svg" width="100%" alt="Architecture flow: User to Stored Procedures to Stock Transactions to Triggers to Stock Table to Views to Reports"/>
-</div>
-
-```text
-User
-  ↓
-Stored Procedures
-  ↓
-Stock Transactions
-  ↓
-Triggers
-  ↓
-Stock Table
-  ↓
-Views
-  ↓
-Reports
-```
-
-The user (or application) never writes to `stock` directly — every path to a changed balance goes through a procedure, which inserts a transaction, which a trigger then turns into an updated balance.
+Because of this, the database takes care of keeping stock numbers accurate and consistent, instead of leaving that responsibility to whatever app or script happens to be writing to it.
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
@@ -200,28 +198,6 @@ erDiagram
         int product_id FK
         int quantity_ordered
     }
-```
-
-<img src="./assets/divider.svg" width="100%" height="4"/>
-
-## ❖ Screenshots
-
-> GitHub renders both diagrams above natively, so those are already covered. The screenshots below have to come from this project's own DBeaver session — they're not added yet. Capture them locally and drop them into a `screenshots/` folder before final submission; a README that just describes a database is weaker than one that shows it actually running.
-
-| File | What to capture |
-|---|---|
-| `screenshots/tables.png` | Database Navigator → `warehouse_db` → Tables (all 9 expanded) |
-| `screenshots/triggers.png` | Database Navigator → Triggers, showing all 4 |
-| `screenshots/procedures.png` | Database Navigator → Procedures, showing all 5 |
-| `screenshots/views.png` | Database Navigator → Views, showing all 3 |
-| `screenshots/query-output.png` | Result grid from `CALL sp_reorder_report();` |
-
-```md
-![Tables](screenshots/tables.png)
-![Triggers](screenshots/triggers.png)
-![Procedures](screenshots/procedures.png)
-![Views](screenshots/views.png)
-![Query Output](screenshots/query-output.png)
 ```
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
