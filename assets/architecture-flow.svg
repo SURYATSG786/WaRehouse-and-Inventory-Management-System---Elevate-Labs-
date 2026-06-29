@@ -1,0 +1,94 @@
+<svg viewBox="0 0 1040 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a12"/>
+      <stop offset="100%" stop-color="#0d1320"/>
+    </linearGradient>
+    <pattern id="grid2" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" fill="none" stroke="#16213a" stroke-width="1"/>
+    </pattern>
+    <filter id="boxGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="boxStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F5D4"/>
+      <stop offset="100%" stop-color="#3DA9FC"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+
+  <rect width="1040" height="420" fill="url(#bg2)"/>
+  <rect width="1040" height="420" fill="url(#grid2)" opacity="0.5"/>
+
+  <text x="520" y="34" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#7dd3fc" letter-spacing="3">REQUEST → DATA → REPORT FLOW</text>
+
+  <!-- connector paths -->
+  <g fill="none" stroke="#2dd4bf" stroke-width="2" opacity="0.75">
+    <path id="pA" d="M180,95 H230" marker-end="url(#arrow)" stroke-dasharray="6 6">
+      <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+    <path id="pB" d="M450,95 H500" marker-end="url(#arrow)" stroke-dasharray="6 6">
+      <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+    <path id="pC" d="M720,95 H770" marker-end="url(#arrow)" stroke-dasharray="6 6">
+      <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+    <path id="pD" d="M890,130 V260" marker-end="url(#arrow)" stroke-dasharray="6 6" stroke="#F5A623">
+      <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+    <path id="pE" d="M770,295 H720" marker-end="url(#arrow)" stroke-dasharray="6 6" stroke="#F5A623">
+      <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+    <path id="pF" d="M500,295 H450" marker-end="url(#arrow)" stroke-dasharray="6 6" stroke="#F5A623">
+      <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- traveling packets -->
+  <g>
+    <circle r="4" fill="#00F5D4"><animateMotion dur="1.3s" repeatCount="indefinite"><mpath href="#pA"/></animateMotion></circle>
+    <circle r="4" fill="#00F5D4"><animateMotion dur="1.3s" repeatCount="indefinite"><mpath href="#pB"/></animateMotion></circle>
+    <circle r="4" fill="#00F5D4"><animateMotion dur="1.3s" repeatCount="indefinite"><mpath href="#pC"/></animateMotion></circle>
+    <circle r="4" fill="#F5A623"><animateMotion dur="1.3s" repeatCount="indefinite"><mpath href="#pD"/></animateMotion></circle>
+    <circle r="4" fill="#F5A623"><animateMotion dur="1.3s" repeatCount="indefinite"><mpath href="#pE"/></animateMotion></circle>
+    <circle r="4" fill="#F5A623"><animateMotion dur="1.3s" repeatCount="indefinite"><mpath href="#pF"/></animateMotion></circle>
+  </g>
+
+  <!-- Row 1 -->
+  <g filter="url(#boxGlow)"><rect x="30" y="60" width="150" height="70" rx="12" fill="#0d1726" stroke="url(#boxStroke)" stroke-width="1.6"/></g>
+  <text x="105" y="90" text-anchor="middle" font-family="Verdana" font-size="14" font-weight="bold" fill="#e6edf7">👤 User</text>
+  <text x="105" y="110" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#7c8aa3">DBeaver / app</text>
+
+  <g filter="url(#boxGlow)"><rect x="230" y="60" width="220" height="70" rx="12" fill="#0d1726" stroke="url(#boxStroke)" stroke-width="1.6"/></g>
+  <text x="340" y="90" text-anchor="middle" font-family="Verdana" font-size="14" font-weight="bold" fill="#e6edf7">⚙️ Stored Procedures</text>
+  <text x="340" y="110" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#7c8aa3">sp_transfer_stock, sp_issue_stock...</text>
+
+  <g filter="url(#boxGlow)"><rect x="500" y="60" width="220" height="70" rx="12" fill="#0d1726" stroke="url(#boxStroke)" stroke-width="1.6"/></g>
+  <text x="610" y="90" text-anchor="middle" font-family="Verdana" font-size="14" font-weight="bold" fill="#e6edf7">📝 Stock Transactions</text>
+  <text x="610" y="110" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#7c8aa3">immutable transaction log</text>
+
+  <g filter="url(#boxGlow)"><rect x="770" y="60" width="240" height="70" rx="12" fill="#0d1726" stroke="url(#boxStroke)" stroke-width="1.6"/></g>
+  <text x="890" y="90" text-anchor="middle" font-family="Verdana" font-size="14" font-weight="bold" fill="#e6edf7">⚡ Triggers</text>
+  <text x="890" y="110" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#7c8aa3">sync + alert + guard</text>
+
+  <!-- Row 2 -->
+  <g filter="url(#boxGlow)"><rect x="770" y="260" width="240" height="70" rx="12" fill="#0d1726" stroke="#F5A623" stroke-width="1.6"/></g>
+  <text x="890" y="290" text-anchor="middle" font-family="Verdana" font-size="14" font-weight="bold" fill="#e6edf7">📦 Stock Table</text>
+  <text x="890" y="310" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#7c8aa3">live balance per warehouse</text>
+
+  <g filter="url(#boxGlow)"><rect x="500" y="260" width="220" height="70" rx="12" fill="#0d1726" stroke="#F5A623" stroke-width="1.6"/></g>
+  <text x="610" y="290" text-anchor="middle" font-family="Verdana" font-size="14" font-weight="bold" fill="#e6edf7">👁️ Views</text>
+  <text x="610" y="310" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#7c8aa3">vw_current_stock_levels...</text>
+
+  <g filter="url(#boxGlow)"><rect x="230" y="260" width="220" height="70" rx="12" fill="#0d1726" stroke="#F5A623" stroke-width="1.6"/></g>
+  <text x="340" y="290" text-anchor="middle" font-family="Verdana" font-size="14" font-weight="bold" fill="#e6edf7">📊 Reports</text>
+  <text x="340" y="310" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#7c8aa3">reorder report, KPIs, analytics</text>
+
+  <text x="520" y="385" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5b6b85">cyan = write path · orange = read path back to the user</text>
+</svg>
