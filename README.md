@@ -221,7 +221,7 @@ erDiagram
 
 <table>
 <tr><th>Trigger</th><th>Fires On</th><th>What it does</th></tr>
-<tr><td><code>trg_after_insert_transaction</code></td><td>AFTER INSERT on <code>stock_transactions</code></td><td>Recalculates the live balance in <code>stock</code> — the app never touches <code>stock</code> directly</td></tr>
+<tr><td><code>trg_after_insert_transaction</code></td><td>AFTER INSERT on <code>stock_transactions</code></td><td>Recalculates the live balance in <code>stock</code> the app never touches <code>stock</code> directly</td></tr>
 <tr><td><code>trg_prevent_negative_stock</code></td><td>BEFORE UPDATE on <code>stock</code></td><td>Blocks any update that would push quantity below zero, via <code>SIGNAL SQLSTATE</code></td></tr>
 <tr><td><code>trg_low_stock_alert</code></td><td>AFTER UPDATE on <code>stock</code></td><td>Opens an alert when quantity drops to/below reorder level; auto-resolves it once restocked</td></tr>
 <tr><td><code>trg_low_stock_alert_on_insert</code></td><td>AFTER INSERT on <code>stock</code></td><td>Same check for the very first stock row of a new product/warehouse pair</td></tr>
@@ -234,13 +234,13 @@ mysql> CALL sp_issue_stock(3, 1, 9999, 'should fail');
 ERROR 1644 (45000): Stock quantity cannot go below zero for this product/warehouse.
 ```
 
-The original `INSERT` into `stock_transactions` rolled back completely — no orphaned audit row, no partial update. That's the trigger chain (insert → sync trigger → guard trigger) protecting data integrity end-to-end, confirmed by re-querying `stock_transactions` and finding zero matching rows afterward.
+The original `INSERT` into `stock_transactions` rolled back completely . No orphaned audit row, no partial update. That's the trigger chain (insert → sync trigger → guard trigger) protecting data integrity end-to-end, confirmed by re-querying `stock_transactions` and finding zero matching rows afterward.
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
 ## ❖ Stored Procedures
 
-Transactional procedures follow ACID principles — each one wraps its writes in `START TRANSACTION ... COMMIT`, so a stock transfer or purchase order creation either completes fully or not at all, with consistency enforced by the trigger layer underneath.
+Transactional procedures follow ACID principles . Each one wraps its writes in `START TRANSACTION ... COMMIT`, so a stock transfer or purchase order creation either completes fully or not at all, with consistency enforced by the trigger layer underneath.
 
 | Procedure | What it does |
 |---|---|
@@ -266,7 +266,7 @@ The source warehouse's quantity decreased by 20 and the destination warehouse's 
 
 ## ❖ Reporting Output
 
-> Example output from the sample dataset in `02_sample_data.sql`. These numbers will differ once you start running transactions of your own — that's expected, since the whole point of this design is that the numbers move as real activity happens.
+> Example output from the sample dataset in `02_sample_data.sql`. These numbers will differ once you start running transactions of your own which is expected, since the whole point of this design is that the numbers move as real activity happens.
 
 **Reorder report** (`CALL sp_reorder_report();`) — sample run flagged several products at/below their reorder level, for example:
 
