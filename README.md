@@ -297,6 +297,5 @@ A `stock_value_history` table for time-series valuation trends, role-based acces
 
 <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=16&duration=3000&pause=1000&color=F5A623&center=true&vCenter=true&width=700&lines=Built+by+Surya+T;Elevate+Labs+Internship+Project+2026" alt="footer credit" />
 
-<sub>Every trigger and procedure in this README was executed against live data before being written down.</sub>
 
 </div>
