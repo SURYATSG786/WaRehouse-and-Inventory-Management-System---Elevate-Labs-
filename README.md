@@ -20,7 +20,7 @@ MySQL · DBeaver · Triggers · Procedures · Views
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## 🧰 Technologies Used
+## ❖ Technologies Used
 
 - MySQL 8
 - DBeaver
@@ -241,7 +241,7 @@ erDiagram
 
 <img src="./assets/divider.svg" width="100%" height="4"/>
 
-## ⚡ Triggers
+## ❖ Triggers
 
 <table>
 <tr><th>Trigger</th><th>Fires On</th><th>What it does</th></tr>
