@@ -64,17 +64,19 @@
     <rect x="380" y="18" width="440" height="28" rx="14" fill="#0d1726" stroke="#3DA9FC" stroke-width="1.2">
       <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="2.4s" repeatCount="indefinite"/>
     </rect>
-    <text x="600" y="37" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="12" letter-spacing="1.5" fill="#7dd3fc">MYSQL · DBEAVER · TRIGGER-DRIVEN INVENTORY ENGINE</text>
+    <text x="600" y="37" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="12" letter-spacing="1.5" fill="#7dd3fc">MYSQL · DBEAVER · BUILT BY SURYA T</text>
   </g>
 
   <!-- glow duplicate of title (blurred) -->
-  <text x="600" y="172" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-weight="900" font-size="80" fill="#3DA9FC" filter="url(#bigBlur)" opacity="0.55">StockSync</text>
+  <text x="600" y="135" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-weight="900" font-size="54" fill="#3DA9FC" filter="url(#bigBlur)" opacity="0.55">Inventory &amp; Warehouse</text>
+  <text x="600" y="195" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-weight="900" font-size="54" fill="#3DA9FC" filter="url(#bigBlur)" opacity="0.55">Management System</text>
 
   <!-- crisp title -->
-  <text x="600" y="172" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-weight="900" font-size="80" fill="url(#titleGrad)">StockSync</text>
+  <text x="600" y="135" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-weight="900" font-size="54" fill="url(#titleGrad)">Inventory &amp; Warehouse</text>
+  <text x="600" y="195" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-weight="900" font-size="54" fill="url(#titleGrad)">Management System</text>
 
   <!-- subtitle -->
-  <text x="600" y="222" text-anchor="middle" font-family="Consolas, 'JetBrains Mono', monospace" font-size="22" fill="#cdd6e4" letter-spacing="0.5">Inventory &amp; Warehouse Management System</text>
+  <text x="600" y="240" text-anchor="middle" font-family="Consolas, 'JetBrains Mono', monospace" font-size="18" fill="#cdd6e4" letter-spacing="0.5">MySQL 8.0 · DBeaver 26 · Triggers · Procedures · Views</text>
 
   <!-- bottom scanning beam -->
   <rect y="312" width="1200" height="3" fill="url(#titleGrad)" opacity="0.8"/>
